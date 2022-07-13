@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../header/Header.css";
 
 export default function Header() {
+  const [search, setSearch] = useState("");
+  const searchValue = (e) => {
+    setSearch(e.target.value);
+    console.log(search);
+  };
   return (
     <div className="header">
       <h1>AniSearch</h1>
@@ -11,7 +16,7 @@ export default function Header() {
         <input
           name="search"
           type={"text"}
-          value={"Search"}
+          onInput={searchValue}
           className="search-input"
         />
         <input name="submit" type={"submit"} className="search-submit" />
