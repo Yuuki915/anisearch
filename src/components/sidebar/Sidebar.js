@@ -9,12 +9,12 @@ export default function Sidebar() {
         <div className="cat-container">
           <p>Category</p>
           <div className="categpries">
-            <p>Action</p>
-            <p>Love & Comedy</p>
-            <p>SF</p>
-            <p></p>
-            <p>Action</p>
-            <p>Action</p>
+            <a href="/">Action</a>
+            <a href="/">Love & Comedy</a>
+            <a href="/">SF</a>
+            <a href="/">Action</a>
+            <a href="/">Action</a>
+            <a href="/">Action</a>
           </div>
         </div>
       </div>
