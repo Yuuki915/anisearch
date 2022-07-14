@@ -2,3 +2,12 @@
   padding: 3rem;
   background-color: #ccc;
 }
+.categpries a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+.categpries a:hover {
+  color: #fff;
+}
