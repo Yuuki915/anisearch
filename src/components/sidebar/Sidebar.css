@@ -2,6 +2,9 @@
   padding: 3rem;
   background-color: #ccc;
 }
+.cat-container {
+  text-align: left;
+}
 .categpries a {
   display: block;
   text-decoration: none;

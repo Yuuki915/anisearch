@@ -7,7 +7,7 @@ export default function Sidebar() {
     <div className="sidebar">
       <div>
         <div className="cat-container">
-          <p>Category</p>
+          <h4>Category</h4>
           <div className="categpries">
             <a href="/">Action</a>
             <a href="/">Love & Comedy</a>
