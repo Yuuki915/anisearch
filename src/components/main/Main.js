@@ -3,9 +3,10 @@ import Cards from "../cards/Cards";
 
 import "../main/Main.css";
 
-export default function Main() {
+export default function Main(props) {
   const cards = { cat: "new", title: "Title", seasons: 3, episode: 68 };
 
+  console.log(props.animeData);
   return (
     <div className="main">
       <Cards

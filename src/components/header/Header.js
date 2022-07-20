@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "../header/Header.css";
 
@@ -23,9 +24,9 @@ export default function Header() {
       </form>
 
       <nav className="navbar">
-        <a href="/" className="link">
+        <Link to="/" className="link">
           Home
-        </a>
+        </Link>
         <a href="/" className="link">
           Favorite
         </a>
