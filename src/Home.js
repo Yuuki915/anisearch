@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
@@ -30,16 +30,27 @@ export default function Home() {
   // }
   // <--- gql
 
-  useEffect(() => {
-    const fetchAnime = async () => {
-      const res = await fetch(`http://api.moemoe.tokyo/anime/v1/master/2022`);
-      const json = await res.json();
-      if (res.ok) {
-        setAnimes(json);
-      }
-    };
-    fetchAnime();
-  }, []);
+  const [limit, setLimit] = useState(10);
+  const [cat, setCat] = useState("");
+  // useEffect(() => {
+  //   const fetchAnime = async () => {
+  //     const res = await fetch(
+  //       // `https://kitsu.io/api/edge/anime?page[limit]=${limit}&filter[categories]=${cat}`,
+  //       {
+  //         // headers: {
+  //         //   Accept: "application/vnd.api+json",
+  //         //   ContentType: "application/vnd.api+json",
+  //         // },
+  //       }
+  //     );
+  //     const json = await res.json();
+  //     if (res.ok) {
+  //       setAnimes(json);
+  //     }
+  //   };
+  //   fetchAnime();
+  // }, []);
+  // https://kitsu.io/api/edge
   // http://api.moemoe.tokyo/anime/v1/master/2022/2
   // https://api.annict.com/v1/works
 
