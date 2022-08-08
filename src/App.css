@@ -3,12 +3,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+}
 
 .App {
   text-align: center;
 }
 
 .main-container {
-  display: flex;
-  justify-content: left;
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 100%;
+  overflow: scroll;
 }

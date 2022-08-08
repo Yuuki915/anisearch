@@ -1,9 +1,17 @@
 .sidebar {
   padding: 3rem;
   background-color: #ccc;
+  position: sticky;
+  top: 130px;
+  left: 0;
+  height: 100vh;
+  z-index: 5;
 }
 .cat-container {
   text-align: left;
+  position: sticky;
+  top: 130px;
+  left: 0;
 }
 .categpries a {
   display: block;
