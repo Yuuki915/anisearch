@@ -1,11 +1,8 @@
 .sidebar {
   padding: 3rem;
   background-color: #ccc;
-  position: sticky;
-  top: 130px;
-  left: 0;
+  width: 200px;
   height: 100vh;
-  z-index: 5;
 }
 .cat-container {
   text-align: left;

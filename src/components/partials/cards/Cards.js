@@ -1,19 +1,22 @@
+import "./Cards.css";
 import React from "react";
 import Card from "./Card";
 
-import "./Cards.css";
-
 export default function Cards(props) {
+  const imgOk = props.imgOk;
+
   return (
     <>
       <div className="cards">
-        <Card
-          titleEn={props.titleEn}
-          titleJp={props.titleJp}
-          seasons={props.seasons}
-          episodes={props.episodes}
-          img={props.img}
-        />
+        {imgOk.slice(0, 7).map((data) => (
+          <Card
+            key={data.node.id}
+            titleEn={data.node.titleEn}
+            titleJp={data.node.title}
+            episodes={data.node.episodesCount}
+            img={data.node.image.recommendedImageUrl}
+          />
+        ))}
       </div>
     </>
   );
