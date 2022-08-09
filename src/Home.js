@@ -1,70 +1,85 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import { gql, useQuery } from "@apollo/client";
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
-import Main from "./components/main/Main";
-import Sidebar from "./components/sidebar/Sidebar";
+import { gql, useQuery, useMutation } from "@apollo/client";
+// import { gql, useQuery } from "@apollo/client";
+import Footer from "./components/partials/footer/Footer";
+import Header from "./components/partials/header/Header";
+import Main from "./components/pages/top/main/Main";
+import Sidebar from "./components/pages/top/sidebar/Sidebar";
 
-import AnimeList from "./components/AnimeList";
+import { GET_ALL_ANIME } from "./components/GetAnimes";
 
 export default function Home() {
-  const [animes, setAnimes] = useState(null);
-
-  // gql --->
-  //
-  // const getAnimeQuery = gql`
-  //   {
-  //     animes {
-  //       name
+  // const GET_TODOS = gql`
+  //   query getTodos {
+  //     todos {
+  //       done
   //       id
+  //       text
   //     }
   //   }
   // `;
-  // function AnimeList() {
-  //   const { loading, error, data } = useQuery(getAnimeQuery);
-  //   if (loading) return <p>loading...</p>;
-  //   if (error) return <p>Something went wrong...</p>;
-  //   console.log(data.animes);
-  //   return data.animes.map((anime) => <div key={anime.id}>{anime.name}</div>);
-  // }
-  // <--- gql
 
-  const [limit, setLimit] = useState(10);
-  const [cat, setCat] = useState("");
-  // useEffect(() => {
-  //   const fetchAnime = async () => {
-  //     const res = await fetch(
-  //       // `https://kitsu.io/api/edge/anime?page[limit]=${limit}&filter[categories]=${cat}`,
-  //       {
-  //         // headers: {
-  //         //   Accept: "application/vnd.api+json",
-  //         //   ContentType: "application/vnd.api+json",
-  //         // },
-  //       }
-  //     );
-  //     const json = await res.json();
-  //     if (res.ok) {
-  //       setAnimes(json);
-  //     }
-  //   };
-  //   fetchAnime();
-  // }, []);
-  // https://kitsu.io/api/edge
-  // http://api.moemoe.tokyo/anime/v1/master/2022/2
-  // https://api.annict.com/v1/works
+  const ADD_TODO = gql`
+    mutation addTodo($text: String!) {
+      insert_todos(objects: { text: $text }) {
+        returning {
+          done
+          id
+          text
+        }
+      }
+    }
+  `;
+  const { data, loading, error } = useQuery(GET_ALL_ANIME);
+
+  // const [todoText, setTodoText] = useState("");
+  // const [addTodo] = useMutation(ADD_TODO);
+
+  // const handleAddTodo = async (e) => {
+  //   e.preventDefault();
+
+  //   if (!todoText.trim()) return;
+  //   const data = await addTodo({
+  //     variables: { text: todoText },
+  //     refetchQueries: [{ query: GET_ANIME_2022 }],
+  //   });
+  // };
+
+  if (loading)
+    return (
+      <>
+        <Header />
+        <div className="main-container">
+          <div className="loading">Loading.....</div>
+        </div>
+      </>
+    );
+  if (error)
+    return (
+      <>
+        <Header />
+        <div className="main-container">
+          <div className="error">Sorry! Something went wrong..</div>
+        </div>
+      </>
+    );
+
+  const animeObj = data.searchWorks.edges;
+  const tvAnime =
+    animeObj && animeObj.filter((item) => item.node.media === "TV");
+  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return (
-    <div>
-      <Header />
+    <div className="home">
+      <Header data={imgOk} />
 
       <div className="main-container">
         <Sidebar />
-        <Main animeData={animes} />
+        <Main />
       </div>
-      {/* <AnimeList /> */}
-      {/* {animes &&
-        animes.map((anime) => <p key={anime.id}>{console.log(anime)}</p>)} */}
+
       <Footer />
     </div>
   );
