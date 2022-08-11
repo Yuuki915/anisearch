@@ -10,21 +10,30 @@ import {
   GET_ANIME_2021,
   GET_ANIME_2022,
 } from "./GetAnimes";
-import Category from "./pages/top/main/Category";
 
 export const Data22 = () => {
   const { data, loading, error } = useQuery(GET_ANIME_2022);
 
-  if (loading) return;
-  if (error) return;
+  if (loading)
+    return (
+      <div className="main-container">
+        <div className="loading"></div>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="main-container">
+        <div className="errpr"></div>
+      </div>
+    );
 
   const animeObj = data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  const data22 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
-  return <Category imgOk={imgOk} />;
+  return data22;
 };
 
 export const Data21 = () => {
@@ -37,9 +46,9 @@ export const Data21 = () => {
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  const data21 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
-  return <Category imgOk={imgOk} />;
+  return data21;
 };
 
 export const Data20 = () => {
@@ -52,9 +61,9 @@ export const Data20 = () => {
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  const data20 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
-  return <Category imgOk={imgOk} />;
+  return data20;
 };
 
 export const Data19 = () => {
@@ -67,9 +76,9 @@ export const Data19 = () => {
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  const data19 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
-  return <Category imgOk={imgOk} />;
+  return data19;
 };
 
 export const Data18 = () => {
@@ -82,9 +91,9 @@ export const Data18 = () => {
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  const data18 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
-  return <Category imgOk={imgOk} />;
+  return data18;
 };
 
 export const Data17 = () => {
@@ -97,9 +106,9 @@ export const Data17 = () => {
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  const data17 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
-  return <Category imgOk={imgOk} />;
+  return data17;
 };
 
 export const Data16 = () => {
@@ -112,7 +121,7 @@ export const Data16 = () => {
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  const data16 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
-  return <Category imgOk={imgOk} />;
+  return data16;
 };

@@ -42,6 +42,7 @@ const GET_ALL_ANIME = gql`
           titleEn
           titleKana
           seasonYear
+          seasonName
           media
           image {
             id
@@ -53,7 +54,7 @@ const GET_ALL_ANIME = gql`
   }
 `;
 const GET_ANIME_2022 = gql`
-  {
+  query indexQuery {
     searchWorks(
       seasons: ["2022-spring", "2022-summer", "2022-autumn", "2022-winter"]
       orderBy: { field: WATCHERS_COUNT, direction: DESC }
@@ -95,6 +96,7 @@ const GET_ANIME_2021 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -123,6 +125,7 @@ const GET_ANIME_2020 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -151,6 +154,7 @@ const GET_ANIME_2019 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -179,6 +183,7 @@ const GET_ANIME_2018 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -206,6 +211,7 @@ const GET_ANIME_2017 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -234,6 +240,7 @@ const GET_ANIME_2016 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
