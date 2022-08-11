@@ -1,87 +1,84 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import { gql, useQuery, useMutation } from "@apollo/client";
-// import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Footer from "./components/partials/footer/Footer";
 import Header from "./components/partials/header/Header";
 import Main from "./components/pages/top/main/Main";
 import Sidebar from "./components/pages/top/sidebar/Sidebar";
-
+import { GET_ALL_ANIME } from "./components/GetAnimes";
 import {
-  GET_ANIME_2022,
-  GET_ANIME_2021,
-  GET_ANIME_2020,
-  GET_ANIME_2019,
-  GET_ANIME_2018,
-  GET_ANIME_2017,
-  GET_ANIME_2016,
-} from "./components/GetAnimes";
-import AnimeList from "./components/AnimeList";
+  Data16,
+  Data17,
+  Data18,
+  Data19,
+  Data20,
+  Data21,
+  Data22,
+} from "./components/EachYear";
 
 export default function Home() {
-  const [animes, setAnimes] = useState(null);
+  const { data, loading, error } = useQuery(GET_ALL_ANIME);
+  const animeData = data && data.searchWorks.edges;
+  const animeTv =
+    animeData && animeData.filter((item) => item.node.media === "TV");
+  const imgNull = animeTv && animeTv.filter((item) => item.node.image === null);
+  const dataAll = animeTv && animeTv.filter((item) => item.node.image !== null);
 
-  // const GET_TODOS = gql`
-  //   query getTodos {
-  //     todos {
-  //       done
-  //       id
-  //       text
-  //     }
-  //   }
-  // `;
+  const data22 = Data22();
+  const data21 = Data21();
+  const data20 = Data20();
+  const data19 = Data19();
+  const data18 = Data18();
+  const data17 = Data17();
+  const data16 = Data16();
 
-  const ADD_TODO = gql`
-    mutation addTodo($text: String!) {
-      insert_todos(objects: { text: $text }) {
-        returning {
-          done
-          id
-          text
-        }
-      }
-    }
-  `;
-  const { data, loading, error } = useQuery(GET_ANIME_2022);
-
-  // const [todoText, setTodoText] = useState("");
-  // const [addTodo] = useMutation(ADD_TODO);
-
-  // const handleAddTodo = async (e) => {
-  //   e.preventDefault();
-
-  //   if (!todoText.trim()) return;
-  //   const data = await addTodo({
-  //     variables: { text: todoText },
-  //     refetchQueries: [{ query: GET_ANIME_2022 }],
-  //   });
-  // };
-
-  if (loading) return <h2>Loading Todos...</h2>;
-  if (error) return <h2>Error fetching todos!</h2>;
-
-  const oyoyo = data.searchWorks.edges;
-  const tvAnime = oyoyo && oyoyo.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
-  const imgOk = tvAnime && tvAnime.filter((item) => item.node.image !== null);
+  console.log(dataAll);
+  
+  if (loading)
+    return (
+      <>
+        <Header />
+        <div className="main-container">
+          <div className="loading">Loading.....</div>
+        </div>
+      </>
+    );
+  if (error)
+    return (
+      <>
+        <Header />
+        <div className="main-container">
+          <div className="error">Sorry! Something went wrong..</div>
+        </div>
+      </>
+    );
 
   return (
     <div className="home">
-      <Header data={imgOk} />
+      <Header
+        dataAll={dataAll}
+        data22={data22}
+        data21={data21}
+        data20={data20}
+        data19={data19}
+        data18={data18}
+        data17={data17}
+        data16={data16}
+      />
 
       <div className="main-container">
         <Sidebar />
-        <Main imgOk={imgOk} imgNull={imgNull} />
-      </div>
-
-      {/* {imgOk.map((item) => (
-        <img
-          key={item.id}
-          src={`${item.node.image.recommendedImageUrl}`}
-          alt={`${item.node.title}`}
-          style={{ width: "200px" }}
+        <Main
+          dataAll={dataAll}
+          data22={data22}
+          data21={data21}
+          data20={data20}
+          data19={data19}
+          data18={data18}
+          data17={data17}
+          data16={data16}
         />
-      ))} */}
+      </div>
 
       <Footer />
     </div>

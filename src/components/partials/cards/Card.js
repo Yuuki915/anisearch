@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { BsBookmarkFill, BsBookmark } from "react-icons/bs";
+import { BsBookmarkFill } from "react-icons/bs";
 
 export default function Card(props) {
-  const [card, setCard] = useState({});
   const [likedClass, setLikedClass] = useState(false);
 
   const [count, setCount] = useState(1);
@@ -14,7 +13,6 @@ export default function Card(props) {
     } else {
       setLikedClass(true);
     }
-    console.log(count);
   };
 
   return (
@@ -36,9 +34,6 @@ export default function Card(props) {
 
       <div className="hover-item">
         <div className="title-jp">{props.titleJp}</div>
-        {/* <div className="like" onClick={likeHandler}>
-          {like}
-        </div> */}
       </div>
     </div>
   );

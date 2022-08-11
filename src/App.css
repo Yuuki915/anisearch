@@ -12,8 +12,12 @@ a {
 }
 
 .main-container {
-  display: grid;
+  /* display: grid;
+  max-width: 100%;
   grid-template-columns: 200px auto;
-  grid-template-rows: 100%;
-  overflow: scroll;
+  grid-template-rows: 100%; */
+  /* overflow: hidden; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }

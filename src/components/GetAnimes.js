@@ -1,17 +1,70 @@
 import { gql } from "@apollo/client";
 
-const GET_ANIME_2022 = gql`
+const GET_ALL_ANIME = gql`
   {
+    searchWorks(
+      seasons: [
+        "2022-spring"
+        "2022-summer"
+        "2022-autumn"
+        "2022-winter"
+        "2021-spring"
+        "2021-summer"
+        "2021-autumn"
+        "2021-winter"
+        "2020-spring"
+        "2020-summer"
+        "2020-autumn"
+        "2020-winter"
+        "2019-spring"
+        "2019-summer"
+        "2019-autumn"
+        "2019-winter"
+        "2018-spring"
+        "2018-summer"
+        "2018-autumn"
+        "2018-winter"
+        "2017-spring"
+        "2017-summer"
+        "2017-autumn"
+        "2017-winter"
+        "2016-spring"
+        "2016-summer"
+        "2016-autumn"
+        "2016-winter"
+      ]
+      orderBy: { field: WATCHERS_COUNT, direction: DESC }
+    ) {
+      edges {
+        node {
+          id
+          title
+          titleEn
+          titleKana
+          seasonYear
+          seasonName
+          media
+          image {
+            id
+            recommendedImageUrl
+          }
+        }
+      }
+    }
+  }
+`;
+const GET_ANIME_2022 = gql`
+  query indexQuery {
     searchWorks(
       seasons: ["2022-spring", "2022-summer", "2022-autumn", "2022-winter"]
       orderBy: { field: WATCHERS_COUNT, direction: DESC }
     ) {
       edges {
         node {
-          annictId
           id
           title
           titleEn
+          titleKana
           episodesCount
           seasonYear
           seasonName
@@ -19,13 +72,8 @@ const GET_ANIME_2022 = gql`
           satisfactionRate
           image {
             id
-            copyright
             recommendedImageUrl
-            facebookOgImageUrl
-            twitterAvatarUrl
-            twitterBiggerAvatarUrl
-            twitterMiniAvatarUrl
-            twitterNormalAvatarUrl
+            copyright
           }
         }
       }
@@ -42,17 +90,19 @@ const GET_ANIME_2021 = gql`
     ) {
       edges {
         node {
-          annictId
           id
           title
           titleEn
+          titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
             id
             recommendedImageUrl
+            copyright
           }
         }
       }
@@ -69,17 +119,19 @@ const GET_ANIME_2020 = gql`
     ) {
       edges {
         node {
-          annictId
           id
           title
           titleEn
+          titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
             id
             recommendedImageUrl
+            copyright
           }
         }
       }
@@ -96,17 +148,19 @@ const GET_ANIME_2019 = gql`
     ) {
       edges {
         node {
-          annictId
           id
           title
           titleEn
+          titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
             id
             recommendedImageUrl
+            copyright
           }
         }
       }
@@ -123,17 +177,19 @@ const GET_ANIME_2018 = gql`
     ) {
       edges {
         node {
-          annictId
           id
           title
           titleEn
+          titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
             id
             recommendedImageUrl
+            copyright
           }
         }
       }
@@ -149,17 +205,19 @@ const GET_ANIME_2017 = gql`
     ) {
       edges {
         node {
-          annictId
           id
           title
           titleEn
+          titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
             id
             recommendedImageUrl
+            copyright
           }
         }
       }
@@ -176,17 +234,19 @@ const GET_ANIME_2016 = gql`
     ) {
       edges {
         node {
-          annictId
           id
           title
           titleEn
+          titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
             id
             recommendedImageUrl
+            copyright
           }
         }
       }
@@ -195,6 +255,7 @@ const GET_ANIME_2016 = gql`
 `;
 
 export {
+  GET_ALL_ANIME,
   GET_ANIME_2022,
   GET_ANIME_2021,
   GET_ANIME_2020,
