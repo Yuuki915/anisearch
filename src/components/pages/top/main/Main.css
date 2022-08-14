@@ -1,25 +1,34 @@
 .main {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  /* height: calc(100vh - 30px - 80px); */
+
   background-color: #555;
-  /* padding: 3rem 0; */
   text-align: left;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 
   text-align: center;
 }
-.category {
+.category,
+.cat-choose {
   margin: 2rem 0.5rem;
-  padding: 3rem 1rem 0;
   background-color: #555;
   border-radius: 20px;
   box-shadow: 0px 0px 20px #333;
+}
+.cat-choose div {
+  font-size: 20px;
+  color: #fff;
+  margin: 2rem;
 }
 
 .header-more {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem 1rem 0;
+  color: #fff;
 }
 .read-more {
   background-color: coral;
@@ -31,7 +40,8 @@
 .loading,
 .error {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 30px - 80px);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,51 +49,32 @@
   color: #fff;
 }
 
-/* 
-  display main
-*/
-/* .display-off {
-  display: none;
-}
-.display-on22,
-.display-on21,
-.display-on20,
-.display-on19,
-.display-on18,
-.display-on17,
-.display-on16 {
-  display: block;
-}
-.display-off22,
-.display-off21,
-.display-off20,
-.display-off19,
-.display-off18,
-.display-off17,
-.display-off16 {
-  display: none;
-}
-
-.cat-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-} */
-
-.main {
-  display: flex;
-  flex-direction: column;
-}
 .part-category {
-  height: 30%;
+  height: 170px;
+  width: 50%;
+  margin: 2rem auto 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
 }
-.year-and-seasons {
+.bg-blur {
   height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  filter: blur(5px);
+}
+
+.year-and-seasons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #333;
 }
 .year-and-seasons div {
   width: 100%;
@@ -95,11 +86,20 @@
 .years::-webkit-scrollbar {
   display: none;
 }
-.year:first-child {
+.year-top-margin {
   margin-top: 3rem;
 }
 .year:last-child {
   margin-bottom: 3rem;
+}
+.seasons {
+  opacity: 1;
+  font-size: 15px;
+  font-weight: 700;
+  color: #666;
+}
+.seasons-disable {
+  opacity: 0;
 }
 
 /* Choosed Year */
@@ -113,9 +113,12 @@
   color: #666;
 }
 
-.show-data {
-  display: block;
-}
 .show-data-disable {
-  display: none;
+  /* display: none; */
+  opacity: 0;
+}
+.show-data {
+  height: calc(100% - 30px - 80px - 170px);
+  opacity: 1;
+  /* display: block; */
 }
