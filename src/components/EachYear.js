@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import React from "react";
+import React, { useState } from "react";
 import {
   GET_ALL_ANIME,
   GET_ANIME_2016,
@@ -11,8 +11,8 @@ import {
   GET_ANIME_2022,
 } from "./GetAnimes";
 
-export const Data22 = () => {
-  const { data, loading, error } = useQuery(GET_ANIME_2022);
+const DataAll = () => {
+  const { data, loading, error } = useQuery(GET_ALL_ANIME);
 
   if (loading)
     return (
@@ -27,6 +27,21 @@ export const Data22 = () => {
       </div>
     );
 
+  const animeData = data && data.searchWorks.edges;
+  const animeTv =
+    animeData && animeData.filter((item) => item.node.media === "TV");
+  const imgNull = animeTv && animeTv.filter((item) => item.node.image === null);
+  const dataAll = animeTv && animeTv.filter((item) => item.node.image !== null);
+
+  return dataAll;
+};
+
+const Data22 = () => {
+  const { data, loading, error } = useQuery(GET_ANIME_2022);
+
+  if (loading) return;
+  if (error) return;
+
   const animeObj = data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
@@ -36,7 +51,7 @@ export const Data22 = () => {
   return data22;
 };
 
-export const Data21 = () => {
+const Data21 = () => {
   const { data, loading, error } = useQuery(GET_ANIME_2021);
 
   if (loading) return;
@@ -51,7 +66,7 @@ export const Data21 = () => {
   return data21;
 };
 
-export const Data20 = () => {
+const Data20 = () => {
   const { data, loading, error } = useQuery(GET_ANIME_2020);
 
   if (loading) return;
@@ -66,7 +81,7 @@ export const Data20 = () => {
   return data20;
 };
 
-export const Data19 = () => {
+const Data19 = () => {
   const { data, loading, error } = useQuery(GET_ANIME_2019);
 
   if (loading) return;
@@ -81,7 +96,7 @@ export const Data19 = () => {
   return data19;
 };
 
-export const Data18 = () => {
+const Data18 = () => {
   const { data, loading, error } = useQuery(GET_ANIME_2018);
 
   if (loading) return;
@@ -96,7 +111,7 @@ export const Data18 = () => {
   return data18;
 };
 
-export const Data17 = () => {
+const Data17 = () => {
   const { data, loading, error } = useQuery(GET_ANIME_2017);
 
   if (loading) return;
@@ -111,7 +126,7 @@ export const Data17 = () => {
   return data17;
 };
 
-export const Data16 = () => {
+const Data16 = () => {
   const { data, loading, error } = useQuery(GET_ANIME_2016);
 
   if (loading) return;
@@ -125,3 +140,5 @@ export const Data16 = () => {
 
   return data16;
 };
+
+export { Data16, Data17, Data18, Data19, Data20, Data21, Data22, DataAll };
