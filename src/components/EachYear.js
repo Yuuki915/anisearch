@@ -42,7 +42,7 @@ const Data22 = () => {
   if (loading) return;
   if (error) return;
 
-  const animeObj = data.searchWorks.edges;
+  const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
@@ -57,7 +57,7 @@ const Data21 = () => {
   if (loading) return;
   if (error) return;
 
-  const animeObj = data.searchWorks.edges;
+  const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
@@ -72,7 +72,7 @@ const Data20 = () => {
   if (loading) return;
   if (error) return;
 
-  const animeObj = data.searchWorks.edges;
+  const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
@@ -87,7 +87,7 @@ const Data19 = () => {
   if (loading) return;
   if (error) return;
 
-  const animeObj = data.searchWorks.edges;
+  const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
@@ -102,7 +102,7 @@ const Data18 = () => {
   if (loading) return;
   if (error) return;
 
-  const animeObj = data.searchWorks.edges;
+  const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
@@ -117,7 +117,7 @@ const Data17 = () => {
   if (loading) return;
   if (error) return;
 
-  const animeObj = data.searchWorks.edges;
+  const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
@@ -132,7 +132,7 @@ const Data16 = () => {
   if (loading) return;
   if (error) return;
 
-  const animeObj = data.searchWorks.edges;
+  const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
   const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
