@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 
 import { CgSearch, CgClose } from "react-icons/cg";
 
-export const Search = ({ seasonData, yearData }) => {
+export const Search = ({
+  inputValue,
+  setInputValue,
+  searchedList,
+  setSearchedList,
+  seasonData,
+  yearData,
+}) => {
   const [count, setCount] = useState(1);
   const [searchFormToggle, setSearchFormToggle] = useState(false);
   const [togglePlaceholder, setTogglePlaceholder] = useState("abc");
-  const [searchedList, setSearchedList] = useState([]);
-  const [inputValue, setInputValue] = useState("");
 
   const clickToggleHandler = () => {
     setCount((prev) => prev + 1);
@@ -37,6 +42,7 @@ export const Search = ({ seasonData, yearData }) => {
       if (searchFormToggle === false) {
         searchedEn = yearData.filter((val) => {
           return val.node.titleEn
+            .replace(" ", "")
             .toLowerCase()
             .includes(searchedValue.toLowerCase());
         });
@@ -48,6 +54,7 @@ export const Search = ({ seasonData, yearData }) => {
       } else {
         searchedJp = yearData.filter((val) => {
           return val.node.titleKana
+            .replace(" ", "")
             .toLowerCase()
             .includes(searchedValue.toLowerCase());
         });
@@ -62,6 +69,7 @@ export const Search = ({ seasonData, yearData }) => {
       if (searchFormToggle === false) {
         searchedEn = seasonData.filter((val) => {
           return val.node.titleEn
+            .replace(" ", "")
             .toLowerCase()
             .includes(searchedValue.toLowerCase());
         });
@@ -73,6 +81,7 @@ export const Search = ({ seasonData, yearData }) => {
       } else {
         searchedJp = seasonData.filter((val) => {
           return val.node.titleKana
+            .replace(/[^0-9a-z]/gi, "")
             .toLowerCase()
             .includes(searchedValue.toLowerCase());
         });

@@ -43,6 +43,8 @@ const GET_ALL_ANIME = gql`
           titleKana
           seasonYear
           seasonName
+          episodesCount
+          satisfactionRate
           media
           image {
             id
@@ -54,7 +56,7 @@ const GET_ALL_ANIME = gql`
   }
 `;
 const GET_ANIME_2022 = gql`
-  query indexQuery {
+  {
     searchWorks(
       seasons: ["2022-spring", "2022-summer", "2022-autumn", "2022-winter"]
       orderBy: { field: WATCHERS_COUNT, direction: DESC }
