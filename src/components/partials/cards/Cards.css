@@ -16,11 +16,6 @@
   max-height: 330px;
   height: 300px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
   color: #333;
   background-color: #fff;
   border-radius: 10px;
@@ -29,6 +24,13 @@
   cursor: pointer;
 
   position: relative;
+}
+.card-img-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .anime-img {
   width: auto;
