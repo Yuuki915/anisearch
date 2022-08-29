@@ -1,8 +1,12 @@
 .fav-page {
   width: 100vw;
   height: 100vh;
+  overflow: scroll;
+}
 
+.fav-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 6rem;
 }

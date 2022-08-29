@@ -8,7 +8,7 @@
   color: #fff;
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   padding: 1rem;
   z-index: 99;
 }
@@ -74,8 +74,6 @@
   font-size: 18px;
   padding: 15px;
   outline: none;
-  /* height: 30px;
-  width: 300px; */
 }
 .search-icon {
   height: 40px;
@@ -122,6 +120,7 @@
   position: fixed;
   bottom: 0;
   background-color: #333;
+  z-index: 3;
 }
 .copyright {
   height: 30px;
@@ -129,4 +128,22 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+}
+
+@media (max-width: 890px) {
+  .search-form {
+    top: 80px;
+    left: 0;
+    width: 100vw;
+    padding: 0 0 0.5rem;
+  }
+  .search-inputs {
+    justify-content: left;
+  }
+  .search-input {
+    /* width: 200px; */
+  }
+  .data-lists {
+    margin-right: 50px;
+  }
 }
