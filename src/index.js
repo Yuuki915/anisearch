@@ -4,7 +4,7 @@ import App from "./App";
 
 // gql --->
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { DataProvider } from "./context/EachDataContext";
+import { FavDataProvider } from "./context/FavDataContext";
 
 const client = new ApolloClient({
   uri: "https://api.annict.com/graphql",
@@ -19,9 +19,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <DataProvider>
+      <FavDataProvider>
         <App />
-      </DataProvider>
+      </FavDataProvider>
     </ApolloProvider>
   </React.StrictMode>
 );
