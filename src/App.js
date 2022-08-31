@@ -1,20 +1,24 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FavDataProvider } from "./context/FavDataContext";
 
-import Home from "./Home";
-import Item from "./components/pages/Item";
+import Home from "./components/pages/Home";
+import { FavoritePage } from "./components/pages/FavoritePage";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <div className="pages">
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
+    <FavDataProvider>
+      <div className="App">
+        <BrowserRouter>
+          <div className="pages">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/favorite" element={<FavoritePage />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
+    </FavDataProvider>
   );
 }
 
