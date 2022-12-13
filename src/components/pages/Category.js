@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "../../partials/cards/Cards";
+import Cards from "../partials/cards/Cards";
 
 export default function Category({ yearData, year, seasonData, season }) {
   return (

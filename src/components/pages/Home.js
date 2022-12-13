@@ -1,14 +1,14 @@
-import "./components/pages/main/Main.css";
-import React, { useState } from "react";
+import "./Main.css";
+import React, {  useState } from "react";
 
 import { Player } from "@lottiefiles/react-lottie-player";
-import loadingImg from "./image/loading-img.json";
-import errorImg from "./image/error.json";
+import loadingImg from "../../image/loading-img.json";
+import errorImg from "../../image/error.json";
 
 import { useQuery } from "@apollo/client";
-import Footer from "./components/partials/footer/Footer";
-import Header from "./components/partials/header/Header";
-import { GET_ALL_ANIME } from "./components/GetAnimes";
+import Footer from "../partials/footer/Footer";
+import Header from "../partials/header/Header";
+import { GET_ALL_ANIME } from "../GetAnimes";
 import {
   Data16,
   Data17,
@@ -18,11 +18,10 @@ import {
   Data21,
   Data22,
   DataAll,
-} from "./components/EachYear";
-import Category from "./components/pages/main/Category";
-import { Search } from "./components/partials/Search";
-import Cards from "./components/partials/cards/Cards";
-import Item from "./components/pages/Item";
+} from "../EachYear";
+import Category from "./Category";
+import { Search } from "../partials/Search";
+import Cards from "../partials/cards/Cards";
 
 export default function Home() {
   const { loading, error } = useQuery(GET_ALL_ANIME);
@@ -36,9 +35,9 @@ export default function Home() {
   const data16 = Data16();
 
   const years = [9999, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
-  const [chosenYear, setChosenYear] = useState();
+  const [choseYear, setChoseYear] = useState("");
   const seasons = ["Spring", "Summer", "Autumn", "Winter"];
-  const [chosenSeason, setChosenSeason] = useState("");
+  const [choseSeason, setChoseSeason] = useState("");
   const [seasonData, setSeasonData] = useState([]);
   const [yearData, setYearData] = useState([]);
   const [className, setClassName] = useState("show-data-disable");
@@ -48,11 +47,10 @@ export default function Home() {
   const [searchedList, setSearchedList] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-
   const yearHandler = (year) => {
     setClassName("show-data");
 
-    setChosenYear(() => {
+    setChoseYear(() => {
       if (year === 9999) {
         setMarginToggle(true);
         setSeasonForAll(true);
@@ -82,17 +80,17 @@ export default function Home() {
       return year;
     });
 
-    setChosenSeason("");
+    setChoseSeason("");
   };
 
   const seasonHandler = (season) => {
-    setChosenSeason(() => {
+    setChoseSeason(() => {
       // season
       const findSeason = yearData.filter(
         (item) => item.node.seasonName === season.toUpperCase()
       );
 
-      if (chosenYear === 9999) {
+      if (choseYear === 9999) {
         setSeasonData(yearData);
       } else {
         setSeasonData(findSeason);
@@ -162,7 +160,7 @@ export default function Home() {
                   <p
                     key={year}
                     className={`year ${
-                      chosenYear === year ? "set-year" : "unset-year"
+                      choseYear === year ? "set-year" : "unset-year"
                     }`}
                     onClick={() => yearHandler(year)}
                   >
@@ -172,13 +170,15 @@ export default function Home() {
               </div>
 
               <div
-                className={`seasons ${seasonForAll ? "seasons-disable" : ""}`}
+                className={`seasons ${
+                  seasonForAll || choseYear === "" ? "seasons-disable" : ""
+                }`}
               >
                 {seasons.map((season) => (
                   <p
                     key={season}
                     className={`${
-                      chosenSeason === season ? "set-season" : "unset-season"
+                      choseSeason === season ? "set-season" : "unset-season"
                     } `}
                     onClick={() => seasonHandler(season)}
                   >
@@ -197,9 +197,9 @@ export default function Home() {
               <div className={`${className}`}>
                 <Category
                   yearData={yearData}
-                  year={chosenYear}
+                  year={choseYear}
                   seasonData={seasonData}
-                  season={chosenSeason}
+                  season={choseSeason}
                 />
               </div>
             )
@@ -208,9 +208,9 @@ export default function Home() {
               <div className="category">
                 <div className="header-more">
                   <h2>
-                    {chosenYear === 9999
+                    {choseYear === 9999
                       ? "All TV Anime"
-                      : `TV Anime ${chosenSeason} in ${chosenYear}`}
+                      : `TV Anime ${choseSeason} in ${choseYear}`}
                   </h2>
 
                   <p>{searchedList.length} Hit!</p>
@@ -224,8 +224,6 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      {/* {cardClicked ? <Item /> : <></>} */}
 
       <Footer />
     </div>

@@ -11,15 +11,9 @@ export default function Header() {
         <Link to="/" className="link">
           Home
         </Link>
-        <a href="/" className="link">
+        <Link to="/favorite" className="link">
           Favorite
-        </a>
-        <a href="/" className="link">
-          Home
-        </a>
-        <a href="/" className="link">
-          Home
-        </a>
+        </Link>
       </nav>
     </div>
   );
