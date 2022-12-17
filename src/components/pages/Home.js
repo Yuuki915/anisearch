@@ -52,7 +52,8 @@ export default function Home() {
   const { favData, setFavData } = useContext(FavDataContext);
   const getFavs = async () => {
     await axios
-      .get("http://localhost:8800")
+      // .get("http://localhost:8800")
+      .get("https://anisearch-api.onrender.com")
       .then((res) => {
         res.data.map((item) => (item.isLiked = true));
         setFavData(res.data);
