@@ -23,7 +23,7 @@ export default function Item({ selectedId, ItemCloseHandler }) {
       <div>
         <p>{`${item.episodesCount} episodes`}</p>
         <p>{`Release: ${item.seasonName}, ${item.seasonYear}`}</p>
-        <p>{item.satisfactionRate}</p>
+        <p>Satisfaction Rate: {item.satisfactionRate}</p>
       </div>
     </div>
   );

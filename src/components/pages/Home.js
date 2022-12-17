@@ -24,7 +24,6 @@ import { Search } from "../partials/Search";
 import Cards from "../partials/cards/Cards";
 import axios from "axios";
 import { FavDataContext } from "../../context/FavDataContext";
-import Card from "../partials/cards/Card";
 
 export default function Home() {
   const { loading, error } = useQuery(GET_ALL_ANIME);
