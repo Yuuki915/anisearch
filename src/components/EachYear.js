@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import React from "react";
 import {
   GET_ALL_ANIME,
   GET_ANIME_2016,
@@ -30,7 +30,7 @@ const DataAll = () => {
   const animeData = data && data.searchWorks.edges;
   const animeTv =
     animeData && animeData.filter((item) => item.node.media === "TV");
-  const imgNull = animeTv && animeTv.filter((item) => item.node.image === null);
+  // const imgNull = animeTv && animeTv.filter((item) => item.node.image === null);
   const dataAll = animeTv && animeTv.filter((item) => item.node.image !== null);
 
   return dataAll;
@@ -45,7 +45,7 @@ const Data22 = () => {
   const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  // const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
   const data22 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return data22;
@@ -60,7 +60,7 @@ const Data21 = () => {
   const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  // const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
   const data21 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return data21;
@@ -75,7 +75,7 @@ const Data20 = () => {
   const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  // const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
   const data20 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return data20;
@@ -90,7 +90,7 @@ const Data19 = () => {
   const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  // const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
   const data19 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return data19;
@@ -105,7 +105,7 @@ const Data18 = () => {
   const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  // const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
   const data18 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return data18;
@@ -120,7 +120,7 @@ const Data17 = () => {
   const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  // const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
   const data17 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return data17;
@@ -135,7 +135,7 @@ const Data16 = () => {
   const animeObj = data && data.searchWorks.edges;
   const tvAnime =
     animeObj && animeObj.filter((item) => item.node.media === "TV");
-  const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
+  // const imgNull = tvAnime && tvAnime.filter((item) => item.node.image === null);
   const data16 = tvAnime && tvAnime.filter((item) => item.node.image !== null);
 
   return data16;

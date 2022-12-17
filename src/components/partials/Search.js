@@ -123,7 +123,7 @@ export const Search = ({
         </div>
       </div>
 
-      {inputValue.length >= 2 ? (
+      {/* {inputValue.length >= 2 ? (
         searchedList.length !== 0 && (
           <div className="data-lists">
             {searchedList.slice(0, 10).map((item) => {
@@ -139,7 +139,7 @@ export const Search = ({
         )
       ) : (
         <></>
-      )}
+      )} */}
     </div>
   );
 };
