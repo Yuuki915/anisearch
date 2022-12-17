@@ -30,7 +30,7 @@ export default function Header() {
               <span>●</span>Search
             </h4>
             <p>
-              You can search in English and Japanese. Click the letters right
+              You can search in Japanese and alphabets. Click the letters right
               next the search field. Will make letter's color changed and search
               in the color's language.
             </p>
