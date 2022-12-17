@@ -84,6 +84,9 @@
 .years::-webkit-scrollbar {
   display: none;
 }
+.year {
+  cursor: pointer;
+}
 .year-top-margin {
   margin-top: 3rem;
 }
@@ -97,6 +100,31 @@
 }
 .seasons-disable {
   opacity: 0;
+}
+.season {
+  cursor: pointer;
+}
+
+.set-fav-text-color {
+  color: #333;
+  font-weight: 700;
+}
+.unset-fav-text-color {
+  color: #666;
+  font-weight: 700;
+}
+.fav-text {
+  font-size: 15px;
+}
+.unset-fav {
+  font-size: 2rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.set-fav {
+  font-size: 2.5rem;
+  color: #333;
+  margin-top: 0;
 }
 
 /* chose Year */
