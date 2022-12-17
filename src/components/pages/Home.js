@@ -1,10 +1,10 @@
 import "./Main.css";
-import React, {  useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Player } from "@lottiefiles/react-lottie-player";
 import loadingImg from "../../image/loading-img.json";
 import errorImg from "../../image/error.json";
-
+import { FiHeart } from "react-icons/fi";
 import { useQuery } from "@apollo/client";
 import Footer from "../partials/footer/Footer";
 import Header from "../partials/header/Header";
@@ -22,6 +22,9 @@ import {
 import Category from "./Category";
 import { Search } from "../partials/Search";
 import Cards from "../partials/cards/Cards";
+import axios from "axios";
+import { FavDataContext } from "../../context/FavDataContext";
+import Card from "../partials/cards/Card";
 
 export default function Home() {
   const { loading, error } = useQuery(GET_ALL_ANIME);
@@ -46,6 +49,33 @@ export default function Home() {
 
   const [searchedList, setSearchedList] = useState([]);
   const [inputValue, setInputValue] = useState("");
+
+  const { favData, setFavData } = useContext(FavDataContext);
+  const getFavs = async () => {
+    await axios
+      .get("http://localhost:8800")
+      .then((res) => {
+        res.data.map((item) => (item.isLiked = true));
+        setFavData(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getFavs();
+  }, []);
+
+  const [choseFav, setChoseFav] = useState(false);
+  const [showFavData, setShowFavData] = useState({});
+  const ShowFav = () => {
+    setClassName("show-data");
+    setShowFavData(favData);
+    setChoseFav(true);
+    setChoseYear("");
+    setSeasonData([]);
+  };
 
   const yearHandler = (year) => {
     setClassName("show-data");
@@ -76,6 +106,7 @@ export default function Home() {
         setYearData(data16);
       }
       setSeasonData([]);
+      setChoseFav(false);
 
       return year;
     });
@@ -137,6 +168,14 @@ export default function Home() {
         <Footer />
       </>
     );
+  const passCardData = searchedList.map((item) => {
+    const id = item.node.id;
+    const titleEn = item.node.titleEn;
+    const title = item.node.title;
+    const episodes = item.node.episodesCount;
+    const img = item.node.image.recommendedImageUrl;
+    return { id, titleEn, title, episodes, img };
+  });
 
   return (
     <div className="home">
@@ -155,6 +194,15 @@ export default function Home() {
           <div className="part-category">
             <div className="bg-blur"></div>
             <div className="year-and-seasons">
+              <div
+                className={`${
+                  choseFav ? "set-fav-text-color" : "unset-fav-text-color"
+                }`}
+                onClick={ShowFav}
+              >
+                <p className="fav-text">Favorite List</p>
+                <FiHeart className={`${choseFav ? "set-fav" : "unset-fav"}`} />
+              </div>
               <div className={`years ${marginToggle ? "year-top-margin" : ""}`}>
                 {years.map((year) => (
                   <p
@@ -177,7 +225,7 @@ export default function Home() {
                 {seasons.map((season) => (
                   <p
                     key={season}
-                    className={`${
+                    className={`season ${
                       choseSeason === season ? "set-season" : "unset-season"
                     } `}
                     onClick={() => seasonHandler(season)}
@@ -188,6 +236,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+
           {searchedList.length === 0 ? (
             className === "show-data-disable" ? (
               <div className="cat-choose">
@@ -198,6 +247,8 @@ export default function Home() {
                 <Category
                   yearData={yearData}
                   year={choseYear}
+                  favData={showFavData}
+                  choseFav={choseFav}
                   seasonData={seasonData}
                   season={choseSeason}
                 />
@@ -217,7 +268,7 @@ export default function Home() {
                 </div>
 
                 <div className="cards-container">
-                  <Cards imgOk={searchedList} />
+                  <Cards imgOk={passCardData} />
                 </div>
               </div>
             </div>

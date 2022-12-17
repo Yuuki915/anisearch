@@ -10,21 +10,14 @@ export default function Cards({ imgOk }) {
   const ItemCloseHandler = () => {
     setCardClicked(false);
   };
-  
-
   return (
     <>
       <div className="cards">
-        {imgOk &&
+        {Array.isArray(imgOk) &&
           imgOk.map((data) => (
             <Card
-              key={data.node.id}
-              data={data.node}
-              id={data.node.id}
-              titleEn={data.node.titleEn}
-              title={data.node.title}
-              episodes={data.node.episodesCount}
-              img={data.node.image.recommendedImageUrl}
+              key={data.id}
+              data={data}
               setCardClicked={setCardClicked}
               setSelectedId={setSelectedId}
             />

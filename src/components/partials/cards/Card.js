@@ -3,52 +3,31 @@ import Img from "react-cool-img";
 import noImage from "../../../image/noimage.jpg";
 import { Like } from "../Like";
 
-export default function Card({
-  data,
-  id,
-  titleEn,
-  title,
-  episodes,
-  img,
-  isLiked,
-  setCardClicked,
-  setSelectedId,
-  getFavs,
-}) {
+export default function Card({ data, setCardClicked, setSelectedId }) {
   const ItemShowHandler = () => {
-    setSelectedId(id);
+    setSelectedId(data.id);
     setCardClicked(true);
   };
-
   return (
     <div className="card">
-      <Like
-        data={data}
-        id={id}
-        titleEn={titleEn}
-        title={title}
-        episodes={episodes}
-        img={img}
-        isLiked={isLiked}
-        getFavs={getFavs}
-      />
+      <Like data={data} />
 
       <div className="card-img-text" onClick={ItemShowHandler}>
         <div className="anime-img">
           <Img
-            src={`${img}`}
-            alt={titleEn}
+            src={`${data.img}`}
+            alt={data.titleEn}
             size={[200, 300]}
             placeholder={noImage}
           />
         </div>
         <div className="anime-texts">
-          <p>{titleEn}</p>
-          <p>{episodes} Episodes</p>
+          <p>{data.titleEn}</p>
+          <p>{data.episodes} Episodes</p>
         </div>
 
         <div className="hover-item">
-          <div className="title-jp">{title}</div>
+          <div className="title-jp">{data.title}</div>
         </div>
       </div>
     </div>

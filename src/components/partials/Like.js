@@ -1,37 +1,30 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
-import { BsBookmarkFill } from "react-icons/bs";
+import { HiHeart } from "react-icons/hi";
+
 import { FavDataContext } from "../../context/FavDataContext";
 
-export const Like = ({
-  data,
-  id,
-  titleEn,
-  title,
-  episodes,
-  img,
-  isLiked,
-  getFavs,
-}) => {
-  const [likedClass, setLikedClass] = useState(isLiked);
-  const { setFavData } = useContext(FavDataContext);
+export const Like = ({ data }) => {
+  const [likedClass, setLikedClass] = useState(
+    data.isLiked === undefined ? false : data.isLiked
+  );
+  const { favData, setFavData } = useContext(FavDataContext);
 
   const likeData = {
-    id: id,
-    titleEn: titleEn,
-    title: title,
-    img: img,
-    episodes: episodes,
-    isLiked: Boolean(),
+    id: data.id,
+    titleEn: data.titleEn,
+    title: data.title,
+    img: data.img,
+    episodes: data.episodes,
+    isLiked: data.isLiked,
   };
-
   const addFavs = async () => {
     await axios
-      .post("/favorite", likeData)
+      .post("/", likeData)
       .then((res) => {
         likeData.isLiked = true;
         setLikedClass(true);
-        setFavData(likeData);
+        setFavData([...favData, likeData]);
         console.log(res.data);
       })
       .catch((err) => {
@@ -41,7 +34,7 @@ export const Like = ({
   const deleteFavs = async () => {
     console.log("at delete: ", likeData);
     await axios
-      .delete(`/favorite/${likeData.id}`)
+      .delete(`/${likeData.id}`)
       .then((res) => {
         likeData.isLiked = false;
         setLikedClass(false);
@@ -68,9 +61,10 @@ export const Like = ({
       deleteFavs();
     }
   };
+
   return (
     <div className={`like ${likedClass ? "liked" : ""}`} onClick={likeHandler}>
-      <BsBookmarkFill />
+      <HiHeart />
     </div>
   );
 };

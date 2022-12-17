@@ -3,7 +3,7 @@ import React from "react";
 import { DataAll } from "../EachYear";
 import { IoMdClose } from "react-icons/io";
 
-export default function Item({ setCardClicked, selectedId, ItemCloseHandler }) {
+export default function Item({ selectedId, ItemCloseHandler }) {
   const dataAll = DataAll();
   const findItem =
     dataAll && dataAll.filter((data) => data.node.id === selectedId);
