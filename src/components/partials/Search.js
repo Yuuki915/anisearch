@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import { CgSearch, CgClose } from "react-icons/cg";
 
@@ -128,17 +127,12 @@ export const Search = ({
         searchedList.length !== 0 && (
           <div className="data-lists">
             {searchedList.slice(0, 10).map((item) => {
-              const url = item.node.titleEn;
               return (
-                <Link
-                  key={item.node.id}
-                  className="data-item"
-                  to={`/item/${url}`}
-                >
+                <div key={item.node.id} className="data-item">
                   <p className="data-title">
                     {searchFormToggle ? item.node.title : item.node.titleEn}
                   </p>
-                </Link>
+                </div>
               );
             })}
           </div>

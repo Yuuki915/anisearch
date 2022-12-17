@@ -1,6 +1,5 @@
 import "./Header.css";
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 
 export default function Header() {
   const [hint, setHint] = useState(false);
@@ -58,13 +57,6 @@ export default function Header() {
           className={`${hint ? "hint-bg" : "no-bg"}`}
           onClick={ItemCloseHandler}
         ></div>
-
-        {/* <Link to="/" className="link">
-          Home
-        </Link>
-        <Link to="/favorite" className="link">
-          Favorite
-        </Link> */}
       </nav>
     </div>
   );
