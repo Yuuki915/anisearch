@@ -42,6 +42,9 @@ const GET_ALL_ANIME = gql`
           titleEn
           titleKana
           seasonYear
+          seasonName
+          episodesCount
+          satisfactionRate
           media
           image {
             id
@@ -95,6 +98,7 @@ const GET_ANIME_2021 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -123,6 +127,7 @@ const GET_ANIME_2020 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -151,6 +156,7 @@ const GET_ANIME_2019 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -179,6 +185,7 @@ const GET_ANIME_2018 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -206,6 +213,7 @@ const GET_ANIME_2017 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {
@@ -234,6 +242,7 @@ const GET_ANIME_2016 = gql`
           titleKana
           episodesCount
           seasonYear
+          seasonName
           media
           satisfactionRate
           image {

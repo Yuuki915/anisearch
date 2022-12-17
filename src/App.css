@@ -9,15 +9,14 @@ a {
 
 .App {
   text-align: center;
-}
-
-.main-container {
-  /* display: grid;
-  max-width: 100%;
-  grid-template-columns: 200px auto;
-  grid-template-rows: 100%; */
-  /* overflow: hidden; */
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
+  background-color: #555;
+}
+.home {
+  height: auto;
+}
+.main-container {
+  height: 100%;
   display: flex;
 }
