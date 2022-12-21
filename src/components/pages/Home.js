@@ -291,7 +291,8 @@ export default function Home() {
           {searchedList.length === 0 ? (
             className === "show-data-disable" ? (
               <div className="cat-choose">
-                <div>Choose year and season from above</div>
+                <p>Choose a year and a season from above</p>
+                <p>or use search field</p>
               </div>
             ) : (
               <div className={`${className}`}>

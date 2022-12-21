@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:8800/",
+  "proxy": "https://anisearch-api.onrender.com",
   "name": "anisearch",
   "version": "0.1.0",
   "private": true,

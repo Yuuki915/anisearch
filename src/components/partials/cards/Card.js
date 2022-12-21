@@ -10,8 +10,6 @@ export default function Card({ data, setCardClicked, setSelectedId }) {
   };
   return (
     <div className="card">
-      <Like data={data} />
-
       <div className="card-img-text" onClick={ItemShowHandler}>
         <div className="anime-img">
           <Img
@@ -30,6 +28,7 @@ export default function Card({ data, setCardClicked, setSelectedId }) {
           <div className="title-jp">{data.title}</div>
         </div>
       </div>
+      <Like data={data} />
     </div>
   );
 }
