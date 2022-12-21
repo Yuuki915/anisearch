@@ -26,8 +26,8 @@ export default function Cards({ imgOk }) {
 
       {cardClicked ? (
         <>
-          <Item selectedId={selectedId} ItemCloseHandler={ItemCloseHandler} />
           <div className="item-bg" onClick={ItemCloseHandler}></div>
+          <Item selectedId={selectedId} ItemCloseHandler={ItemCloseHandler} />
         </>
       ) : (
         <></>
