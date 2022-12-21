@@ -49,6 +49,14 @@ export default function Home() {
   const [searchedList, setSearchedList] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
+  const [hint, setHint] = useState(false);
+  const ItemCloseHandler = () => {
+    setHint(false);
+  };
+  const ShowHint = () => {
+    setHint(!hint);
+  };
+
   const { favData, setFavData } = useContext(FavDataContext);
   const getFavs = async () => {
     await axios
@@ -179,7 +187,11 @@ export default function Home() {
 
   return (
     <div className="home">
-      <Header />
+      <Header
+        hint={hint}
+        ShowHint={ShowHint}
+        ItemCloseHandler={ItemCloseHandler}
+      />
       <Search
         seasonData={seasonData}
         yearData={yearData}
@@ -189,6 +201,45 @@ export default function Home() {
         setSearchedList={setSearchedList}
       />
 
+      <div
+        className={`${hint ? "hint-bg" : "no-bg"}`}
+        onClick={ItemCloseHandler}
+      ></div>
+      <div className={`${hint ? "hint-list" : "hint-lost-off"}`}>
+        <h2>Site guide</h2>
+
+        <div className="explain">
+          <p>
+            This is a website "Anime search" where are all animes broadcasted in
+            2016 - 2022.
+          </p>
+          <h4>
+            <span>●</span>Search
+          </h4>
+          <p>
+            You can search in Japanese and alphabets. Click the letters right
+            next the search field. Will make letter's color changed and search
+            in the color's language.
+          </p>
+          <p>
+            Search field will help you to search from year / season whichever
+            you chose.
+          </p>
+
+          <h4>
+            <span>●</span>Favorite list
+          </h4>
+          <p>This is your favorite box! Add everything you love!</p>
+
+          <h4>
+            <span>●</span>Years and Seasons
+          </h4>
+          <p>
+            You can find Animes from year and then season. Enjoy looking Animes
+            up!
+          </p>
+        </div>
+      </div>
       <div className="main-container">
         <div className="main">
           <div className="part-category">
